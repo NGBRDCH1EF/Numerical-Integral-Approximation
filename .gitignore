@@ -1,0 +1,13 @@
+venv/
+.venv/
+Readme.pdf
+*.log
+*.tmp
+.DS_Store
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+output/
+data/
+*.sqlite3
