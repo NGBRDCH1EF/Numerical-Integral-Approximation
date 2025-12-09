@@ -14,3 +14,6 @@ data/
 *.spec
 dist/
 build/
+__pycache__/
+*.egg-info/
+.ipynb_checkpoints/
