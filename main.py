@@ -4,6 +4,8 @@ import numpy as np
 from matplotlib import patches
 import sympy as sp
 import visualization
+import code
+
 def get_user_input():
     print("Welcome to the Definite Integral Approximation Visualizer!")
     while True:
@@ -26,11 +28,38 @@ def get_user_input():
                 quality = int(input('Enter the quality of the plot (number of points < 5000)'))
 
             I = DefiniteIntegral(func, var, start, stop, n)
-            input('Press Enter to continue...')
-
+            if input('Type "DEBUG" to enter DEBUG  MODE or Press Enter to continue...') == 'DEBUG':
+                debug_shell(I, quality)
+                
             return I, quality
         except Exception as e:
             print(f"Error: {e}. Please try again.")
+
+def debug_shell(I, quality):
+    """
+    Opens an interactive Python shell with useful variables preloaded.
+    """
+    banner = (
+        "\n--- DEBUG MODE ---\n"
+        "You can inspect variables here.\n"
+        "Available names: I, quality, Definite_Integral, np, sp\n"
+        "Example commands:\n"
+        "  print(I.integral_value)\n"
+        "  print(I.approximations)\n"
+        "  I.left_endpoint_approximation()\n"
+        "Press Ctrl+D or type exit() to continue.\n"
+    )
+
+    # namespace available inside the debug prompt
+    namespace = {
+        "I": I,
+        "quality": quality,
+        "Definite_Integral": DefiniteIntegral,
+        "np": np,
+        "sp": sp,
+    }
+
+    code.interact(banner=banner, local=namespace)
 
 if __name__ == "__main__":
     while True:
