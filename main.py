@@ -1,10 +1,9 @@
-from definite_integral import Definite_Integral
+from definite_integral import DefiniteIntegral
 from matplotlib import pyplot as plt
 import numpy as np
 from matplotlib import patches
 import sympy as sp
 import visualization
-
 def get_user_input():
     print("Welcome to the Definite Integral Approximation Visualizer!")
     while True:
@@ -26,7 +25,7 @@ def get_user_input():
                 n = int(input('Enter the number of subintervals (n): '))
                 quality = int(input('Enter the quality of the plot (number of points < 5000)'))
 
-            I = Definite_Integral(func, var, start, stop, n)
+            I = DefiniteIntegral(func, var, start, stop, n)
             input('Press Enter to continue...')
 
             return I, quality
@@ -34,5 +33,6 @@ def get_user_input():
             print(f"Error: {e}. Please try again.")
 
 if __name__ == "__main__":
-    I, quality = get_user_input()
-    visualization.plot_approximations(I, quality)
+    while True:
+        I, quality = get_user_input()
+        visualization.plot_approximations(I, quality)

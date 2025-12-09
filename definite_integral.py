@@ -2,7 +2,7 @@ import sympy as sp
 import numpy as np
 from typing import Callable
 
-class Definite_Integral:
+class DefiniteIntegral:
     """Class to represent a definite integral and compute Riemann sum approximations."""
     def __init__(self, func: str | Callable, variable: str, start: float | int | str, stop: float | int | str, num: int):
         self.variable = sp.symbols(variable)
@@ -145,7 +145,7 @@ class Definite_Integral:
                 f"start={self.start}, stop={self.stop}, num={self.num})")
 
 if __name__ == "__main__":
-    def _test_integral(di: Definite_Integral):
+    def _test_integral(di: DefiniteIntegral):
         print(di)
         methods = [
             di.left_endpoint_approximation,
@@ -163,6 +163,6 @@ if __name__ == "__main__":
                 print(f"{res['method']}: {res['Division by Zero']}")
         print(f"Exact integral: {di.integral_value}\n")
     
-    test = Definite_Integral("1/x", "x", 0, 1, 4)
+    test = DefiniteIntegral("1/x", "x", 0, 1, 4)
     print(test.left_endpoint_approximation())
 

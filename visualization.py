@@ -1,10 +1,10 @@
 from matplotlib import pyplot as plt
 import numpy as np
 import sympy as sp
-from definite_integral import Definite_Integral
+from definite_integral import DefiniteIntegral
 
 
-def left_endpoints(ax,I:Definite_Integral,quality:int):
+def left_endpoints(ax,I:DefiniteIntegral,quality:int):
     x_left = I.left_endpoint_approximation()['x_left']
     y = I.left_endpoint_approximation()['y']
     dx = x_left[1] - x_left[0]
@@ -16,7 +16,7 @@ def left_endpoints(ax,I:Definite_Integral,quality:int):
     ax.set_title(f'Left Endpoint Approximation\n= {I.left_endpoint_approximation()["approximation"]}')
     return ax
 
-def right_endpoints(ax,I:Definite_Integral,quality:int):
+def right_endpoints(ax,I:DefiniteIntegral,quality:int):
     x_right = I.right_endpoint_approximation()['x_right']
     y = I.right_endpoint_approximation()['y']
     dx = x_right[1] - x_right[0]
@@ -28,7 +28,7 @@ def right_endpoints(ax,I:Definite_Integral,quality:int):
     ax.set_title(f'Right Endpoint Approximation\n= {I.right_endpoint_approximation()["approximation"]}')
     return ax
 
-def trapezoids(ax,I:Definite_Integral,quality:int):
+def trapezoids(ax,I:DefiniteIntegral,quality:int):
     x = I.endpoints
     y = I.func(x)
     polygons = []
@@ -39,7 +39,7 @@ def trapezoids(ax,I:Definite_Integral,quality:int):
     ax.set_title(f'Trapezoid Approximation\n= {I.trapezoid_approximation()["approximation"]}')
     return ax
 
-def midpoints(ax,I:Definite_Integral,quality:int):
+def midpoints(ax,I:DefiniteIntegral,quality:int):
     x_mid = I.mid_point_approximation()['x_mid']
     y = I.mid_point_approximation()['y']
     dx = x_mid[1] - x_mid[0]
@@ -51,7 +51,7 @@ def midpoints(ax,I:Definite_Integral,quality:int):
     ax.set_title(f'Midpoint Approximation\n= {I.mid_point_approximation()["approximation"]}')
     return ax\
     
-def simpsons(ax,I:Definite_Integral,quality:int):
+def simpsons(ax,I:DefiniteIntegral,quality:int):
     x = I.simpson_approximation()['x']
     y = I.simpson_approximation()['y']
     parabolas = []
@@ -64,7 +64,7 @@ def simpsons(ax,I:Definite_Integral,quality:int):
     return ax
 
 
-def plot_approximations(I:Definite_Integral, quality:int):
+def plot_approximations(I:DefiniteIntegral, quality:int):
     approximation_methods = (left_endpoints, right_endpoints, midpoints, trapezoids, simpsons)
     fig, axs = plt.subplots(2, 3, figsize=(16,11),constrained_layout=True)
     x = np.linspace(I.start, I.stop, quality)
@@ -88,6 +88,6 @@ def plot_approximations(I:Definite_Integral, quality:int):
     fig.suptitle(I.full_evaluation_latex + ' = ' + str(I.integral_value_float), fontsize=12,bbox=dict(facecolor='white', edgecolor='black'))
     plt.show()
 if __name__ == "__main__": 
-    test_integral = Definite_Integral("5*sin(x/3) + x", "x", 1, 10, 10)
+    test_integral = DefiniteIntegral("5*sin(x/3) + x", "x", 1, 10, 10)
     
     plot_approximations(I=test_integral, quality=900)
