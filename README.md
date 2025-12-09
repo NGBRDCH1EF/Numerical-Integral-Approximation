@@ -12,13 +12,19 @@ Uses matplotlib to visualize numeric integration techniques.
     2. [Sympy](https://sympy.org/)
     3. [Numpy](https://numpy.org/)
 
+## Installation
+#### 1. Create a virtual environment (where you intend to keep it)
+```python3 -m venv venv```
 
-Install requirements with command:
-```pip install matplotlib sympy numpy```
-If that doesn't work, try this:
-```pip3 install matplotlib sympy numpy```
-If still not working ensure pip is installed:
-```python -m ensurepip --upgrade```
+### 2. Activate it
+```source venv/bin/activate```
+
+### 3. Install dependencies
+```pip install -r requirements.txt```
+
+### 4. Run
+```python main.py```
+
 
 
 ## Instructions

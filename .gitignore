@@ -11,3 +11,6 @@ __pycache__/
 output/
 data/
 *.sqlite3
+*.spec
+dist/
+build/
